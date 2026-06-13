@@ -8,7 +8,9 @@ export default function RootLayout() {
         <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="parole" options={{ headerShown: false }} />
-        <Stack.Screen name="favorite" options={{ headerShown: false }} />
+        <Stack.Screen name="favorite" options={{ headerShown: false }}/>
+        <Stack.Screen name="solfa" options={{ headerShown: false }}/>
+        <Stack.Screen name="SolfaView" options={{ headerShown: false }}/>
         </Stack>
       </PaperProvider>
   );

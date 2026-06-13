@@ -1,0 +1,8 @@
+{
+    "solfas": [
+      { "id": 1, "title": "Derao Jesoa", "file": "solfa1.png"},
+      { "id": 2, "title": "Indro Jesoa", "file": "solfa2.png"},
+      { "id": 3, "title": "Malala", "file": "solfa3.png" },
+      { "id": 4, "title": "Injany feo miantso", "file": "solfa4.png"}
+    ]
+  }

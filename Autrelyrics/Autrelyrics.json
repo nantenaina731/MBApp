@@ -1,0 +1,88 @@
+{
+    "Autre": [
+      { "id": 1,
+       "title": "Ny antom-piainako", 
+        "lyrics": [
+        "Raha mandinika ny fahamasinanao",
+        "raha mijery ny hatsaranao",
+        "tsy misy antony amiko avokoa zao rehetra izao",
+        "fifaliana ho ahy ny mihira ho Anao",
+        "sy ny mitoetra eo an-tongotrao",
+        "sarobidy indrindra amiko Ianao",
+        "midera anao, miankohoka Aminao",
+        "ny antom-piainako, dia hidera Anao",
+        "midera Anao,miankohoka Aminao",
+        "ny antom-piainako, dia hidera Anao"
+      ]},
+      { "id": 2, 
+        "title": "Mpiandry tsara",
+        "lyrics": [
+            "Isan'andro eny isan'ora",
+            "dia mihazona ahy ny tananao",
+            "Ianao ilay mpiandry ondry mora",
+            "mpiaro sady toky tsy mandao",
+            "",
+            "Noho ny fitiavanao ry Tompo",
+            "ilay tsy miova fa maharitra",
+            "dia mbola mahatoky Anao ny foko",
+            "ka hitoetra tsy amin'ahiahy",
+            "",
+            "Fantatrao ny amiko rehetra",
+            "fa  mpandinika ny fo Ianao",
+            "na mitsangana aho na mitoetra",
+            "dia tsy misy miafina Aminao",
+            "",
+            "Eny resy lahatra aho Tompo",
+            "sitrako ny fitantananao",
+            "hiorina Aminao ny finoako",
+            "ka ho Anao aho mandrakizay"
+          ]},
+      { "id": 3,
+       "title": "Ny famindram-ponao",
+       "lyrics": [
+        "Andriamanitra, Ray be fiantra",
+        "he lehibe tokoa ny antranao",
+        "tsy misy vonjy re raha lavitra Anao",
+        "ny famindram-ponao mandrakizay",
+        "",
+        "Tsy manam-paharoa, ny famindram-ponao",
+        "tsy manam-petra ny fitiavanao ",
+        "Ianao Jehovah o, no antenaina",
+        "ny famindram-ponao mandrakizay",
+        "",
+        "Ny fahavaratra, sy lohataona",
+        "ny masoandro sy ny volana",
+        "izao rehetra izao dia manambara",
+        "ny famindram-ponao mandrakizay"
+      ] },
+      { "id": 4,
+       "title": "Masina ianao", 
+       "lyrics": [
+        "Isaorana sy omem-boninahitra mandrakizay Ianao",
+        "hoderaina sy asandratra mandrakizay ny Anaranao",
+        "ianao mpahary ny tany sy ny lanitra",
+        "mihazona izao hita rehetra izao",
+        "Andriananahary Ianao, tsitoha Ianao",
+        "Masina Ianao, Masina Ianao"
+      ]},
+      { "id": 5,
+       "title": "Derao Jesoa",
+       "lyrics": [
+        "Derao lay Mpanjaka teraka ho famonjena antsika",
+        "mihobia ry tany rehetra fa tonga ho ahy sy ho anao",
+        "Jesoa tia, ilay mpanao lalana",
+        "Jesoa tia, ilay fahamarinana",
+        "ary hitondra fiainana mandrakizay"
+      ] },
+      { "id": 6,
+       "title": "Misaora azy",
+       "lyrics": [
+        "Misaora azy eram-po",
+        "misaora an'ilay Ray tsitoha",
+        "misaora fa nomeny Jesoa Kristy zanany",
+        "aoka ny malemy anao hoe mahery aho",
+        "ny mahantra hoe manan-karena aho",
+        "noho izay nataon'ny Tompo tamiko, misaora"
+      ] }
+    ]
+  }

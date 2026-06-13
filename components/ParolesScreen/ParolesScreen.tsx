@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import * as SecureStore from 'expo-secure-store';
+import { Alert } from 'react-native';
 import {
   View,
   Text,
@@ -16,16 +18,37 @@ type Song = {
   lyrics: string[];
 };
 const PURPLE_LIGHT = '#EEEDFE';
-const PURPLE_DARK  = '#3C3489';
 const FONT_SIZES = [14, 16, 18, 22, 26];
 export default function ParolesScreen() {
   const router = useRouter();
   const { song } = useLocalSearchParams();
   const data: Song = JSON.parse(song as string);
-
   const [fontIndex, setFontIndex] = useState<number>(1);
   const fontSize = FONT_SIZES[fontIndex];
-
+  const [favorite, setFavorite] = useState(false);
+  useEffect(() => {
+    SecureStore.getItemAsync('favoris').then((stored) => {
+      if (stored) {
+        const favoris: Song[] = JSON.parse(stored);
+        setFavorite(favoris.some((s) => s.id === data.id));
+      }
+    });
+  }, []);
+  const handleFavorite = async () => {
+    const newValue = !favorite;
+    setFavorite(newValue);
+    try {
+      const stored = await SecureStore.getItemAsync('favoris');
+      const favoris: Song[] = stored ? JSON.parse(stored) : [];
+      const updated = newValue
+        ? [...favoris, data]                          
+        : favoris.filter((s) => s.id !== data.id);   
+      await SecureStore.setItemAsync('favoris', JSON.stringify(updated));
+      Alert.alert('Favoris', newValue ? 'Ajouté aux favoris' : 'Retiré des favoris');
+    } catch (e) {
+      console.error(e);
+    }
+  };
   const increaseFont = (): void => {
     if (fontIndex < FONT_SIZES.length - 1) setFontIndex(fontIndex + 1);
   };
@@ -43,7 +66,7 @@ export default function ParolesScreen() {
           onPress={() => router.back()}
           hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
         >
-          <Text style={styles.backIcon}>‹</Text>
+        <Text style={styles.backIcon}>‹</Text>
         </TouchableOpacity>
         <View style={styles.headerInfo}>
           <Text style={styles.headerNum}>N° {data.id}</Text>
@@ -51,7 +74,6 @@ export default function ParolesScreen() {
             {data.title}
           </Text>
         </View>
-
         {/* Contrôle taille de police */}
         <View style={styles.fontControls}>
           <TouchableOpacity
@@ -73,7 +95,6 @@ export default function ParolesScreen() {
           </TouchableOpacity>
         </View>
       </View>
-
       {/* Paroles */}
       <ScrollView
         style={styles.scroll}
@@ -83,7 +104,7 @@ export default function ParolesScreen() {
         {/* Badge titre */}
         <View style={styles.titleBadge}>
           <Text style={styles.titleBadgeNum}>{data.id}</Text>
-          <Text style={styles.titleBadgeTitle}>{data.title}</Text>
+          <Text style={styles.titleBadgeTitle}>{data.title.toUpperCase()}</Text>
         </View>
 
         {/* Lignes */}
@@ -99,17 +120,19 @@ export default function ParolesScreen() {
             </Text>
           )
         )}
-<View style={styles.fond}> 
-<TouchableOpacity style={styles.heart} >
-      <Ionicons
-        name= 'heart' 
-        size={35}
-        color={'#e74c3c'}
-      />
-</TouchableOpacity>
-</View>
         <View style={styles.bottomSpace} />
       </ScrollView>
+      <View style={styles.fond}> 
+      <TouchableOpacity
+  onPress={handleFavorite}
+>
+  <Ionicons
+    name={favorite ? 'heart' : 'heart-outline'}
+    size={35}
+    color="#e74c3c"
+  />
+</TouchableOpacity>
+</View>
     </SafeAreaView>
   );
 }
@@ -119,22 +142,26 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FAFAFA',
   },
-  fond:{
+  fond: {
+    position: 'absolute',
+    right: 20,
+    bottom: 30,
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: "#fff",
-     // Ombre Android
-     elevation: 8,
-     // Ombre iOS
-     shadowColor: "#000",
-     marginLeft: 248,
-     shadowOffset: {
-       width: 0,
-       height: 2,
-     },
-     shadowOpacity: 0.25,
-     shadowRadius: 5,
+    backgroundColor: '#fff',
+  
+    justifyContent: 'center',
+    alignItems: 'center',
+  
+    elevation: 8,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
   },
   heart :{
     width: 60,
@@ -150,6 +177,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 32,
     gap: 10,
+    borderBottomEndRadius: 15,
   },
   backBtn: {
     paddingRight: 4,
@@ -193,10 +221,9 @@ const styles = StyleSheet.create({
   },
   fontBtnText: {
     color: '#fff',
-    fontSize: 13,
+    fontSize: 15,
     fontWeight: '500',
   },
-
   // Scroll
   scroll: {
     flex: 1,
@@ -205,7 +232,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 24,
   },
-
   // Badge titre
   titleBadge: {
     flexDirection: 'row',
@@ -215,8 +241,8 @@ const styles = StyleSheet.create({
   },
   titleBadgeNum: {
     backgroundColor: PURPLE_LIGHT,
-    color: PURPLE_DARK,
-    fontSize: 13,
+    color: '#2869CA',
+    fontSize: 16,
     fontWeight: '600',
     paddingHorizontal: 10,
     paddingVertical: 4,
@@ -226,7 +252,7 @@ const styles = StyleSheet.create({
   titleBadgeTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: PURPLE_DARK,
+    color:'#2869CA' ,
     flex: 1,
     textTransform: 'capitalize',
   },

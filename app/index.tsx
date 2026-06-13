@@ -1,9 +1,9 @@
 import Home from "@/components/Home/Home";
 import React from "react";
-const home = () => {
+const index = () => {
   return (
     <Home/>
   );
 };
 
-export default home;
+export default index;

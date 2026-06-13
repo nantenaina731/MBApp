@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { Modal, Pressable } from 'react-native';
 import {
   View,
   Text,
@@ -31,12 +32,10 @@ const songs: Song[] = songsData.songs as unknown as Song[];
 export default function SongListScreen() {
   const router = useRouter();
 const [searchQuery, setSearchQuery] = useState<string>('');
-
+const [menuVisible, setMenuVisible] = useState(false);
   const fuse = useMemo(() => new FuseLib(songs, fuseOptions), []);
-
   const results: Song[] = useMemo(() => {
     if (searchQuery.trim() === '') return songs;
-
     const num = Number(searchQuery.trim());
     if (!isNaN(num)) {
       return songs.filter((s) => s.id === num);
@@ -76,9 +75,101 @@ const [searchQuery, setSearchQuery] = useState<string>('');
       <View style={styles.header}>
         <View style={styles.menu}>
         <Text style={styles.headerTitle}>MARAIMBAOVAO</Text>
-        <TouchableOpacity>
-        <Ionicons name="ellipsis-horizontal" size={28} color="white"  />
-        </TouchableOpacity>
+ 
+<TouchableOpacity style={styles.barre} onPress={() => setMenuVisible(true)}>
+<Ionicons
+    name="menu"
+    size={35}
+    color="white"
+  />
+</TouchableOpacity>
+<Modal
+  transparent
+  visible={menuVisible}
+  animationType="fade"
+  onRequestClose={() => setMenuVisible(false)}
+>
+  <Pressable
+    style={{ flex: 1 }}
+    onPress={() => setMenuVisible(false)}
+  >
+    <View
+      style={{
+        position: 'absolute',
+        top:1,
+        right: 20,
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        elevation: 9,
+        minWidth: 150,
+      }}
+    >
+      <TouchableOpacity
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          padding: 15,
+        }}
+        onPress={() => {
+          setMenuVisible(false);
+          router.push('/favorite');
+        }}
+      >
+        <Ionicons
+          name="heart"
+          size={20}
+          color="#e74c3c"
+        />
+        <Text style={{ marginLeft: 10 }}>
+          Favoris
+        </Text>
+      </TouchableOpacity>
+      <View style={styles.Separator} />
+      <TouchableOpacity
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          padding: 15,
+        }}
+        onPress={() => {
+          setMenuVisible(false);
+          router.push('/solfa');
+        }}
+      >
+        <Ionicons
+          name="musical-note"
+          size={22}
+          color="black"
+        />
+        <Text style={{ marginLeft: 10 }}>
+          Solfa
+        </Text>
+      </TouchableOpacity>
+      <View style={styles.Separator} />
+      <TouchableOpacity
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          padding: 15,
+        }}
+        onPress={() => {
+          setMenuVisible(false);
+          router.push('/autre');
+        }}
+      >
+        <Ionicons
+          name="book"
+          size={22}
+          color="gray"
+        />
+        <Text style={{ marginLeft: 10 }}>
+          Hira hafa
+        </Text>
+      </TouchableOpacity>
+    </View>
+  </Pressable>
+</Modal>
+  
         </View>
         <Searchbar
       placeholder="Tonony na Laharana..."
@@ -87,11 +178,8 @@ const [searchQuery, setSearchQuery] = useState<string>('');
       placeholderTextColor="gray"
       style={styles.searchBar}
         />
-        
-        </View>
-
+      </View>
       <Text style={styles.countLabel}>hira {results.length}</Text>
-
       <FlatList<Song>
         data={results}
         keyExtractor={(item) => String(item.id)}
@@ -112,8 +200,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F8F7FC',
   },
   menu:{
-  flexDirection:"row",
-  gap:119,
+    flexDirection:"row",
+    gap:133,
+    marginBottom:10
   },
   header: {
     backgroundColor: '#2869CA',
@@ -132,20 +221,6 @@ const styles = StyleSheet.create({
   searchBar: {
     height: 50,       
     elevation:3,
-  },
-   searchIcon: {
-    fontSize: 16,
-  },
-  searchInput: {
-    flex: 1,
-    color: '#fff',
-    fontSize: 15,
-    paddingVertical: 0,
-  },
-  clearBtn: {
-    color: 'rgba(255,255,255,0.7)',
-    fontSize: 16,
-    paddingLeft: 4,
   },
   countLabel: {
     fontSize: 12,
@@ -201,4 +276,14 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#aaa',
   },
+  Separator: {
+    height: 0.5,
+    width: "70%",
+    backgroundColor: "rgba(128,128,128,0.3)",
+    left:15
+  },
+  barre: {
+    bottom:9,
+    right:2
+  }
 });
