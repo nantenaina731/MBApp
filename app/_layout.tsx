@@ -11,6 +11,8 @@ export default function RootLayout() {
         <Stack.Screen name="favorite" options={{ headerShown: false }}/>
         <Stack.Screen name="solfa" options={{ headerShown: false }}/>
         <Stack.Screen name="SolfaView" options={{ headerShown: false }}/>
+        <Stack.Screen name="autreParole" options={{ headerShown: false }}/>
+        <Stack.Screen name="autreScreen" options={{ headerShown: false }}/>
         </Stack>
       </PaperProvider>
   );

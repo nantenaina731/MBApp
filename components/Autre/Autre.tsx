@@ -23,7 +23,7 @@ export default function AutreScreen() {
   const Autre: OtherSong[] = songsData.Autre as unknown as OtherSong[];
   const handlePress = (song: OtherSong): void => {
     router.push({
-      pathname: '/parole',
+      pathname: '/autreScreen',
       params: { song: JSON.stringify(song) },
     });
   };
@@ -37,8 +37,9 @@ export default function AutreScreen() {
         <Text style={styles.numText}>{item.id}</Text>
       </View>
       <Text style={styles.titre} numberOfLines={1}>
-        {item.title}
+        {item.title.toLowerCase()}
       </Text>
+      <Text style={styles.arrow}>›</Text>
     </TouchableOpacity>
   );
   const Separator = () => <View style={styles.separator} />;
@@ -141,5 +142,9 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: '#1a1a2e',
     textTransform: 'capitalize',
+  },
+  arrow: {
+    fontSize: 22,
+    color: '#bbb',
   },
 });

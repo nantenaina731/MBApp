@@ -154,7 +154,7 @@ const [menuVisible, setMenuVisible] = useState(false);
         }}
         onPress={() => {
           setMenuVisible(false);
-          router.push('/autre');
+          router.push('/autreParole');
         }}
       >
         <Ionicons
@@ -172,7 +172,7 @@ const [menuVisible, setMenuVisible] = useState(false);
   
         </View>
         <Searchbar
-      placeholder="Tonony na Laharana..."
+      placeholder="Tonony na laharana..."
       onChangeText={setSearchQuery}
       value={searchQuery}
       placeholderTextColor="gray"

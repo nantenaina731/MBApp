@@ -1,4 +1,5 @@
 import React from 'react';
+import { Ionicons } from '@expo/vector-icons';
 import {
   View,
   Text,
@@ -103,6 +104,9 @@ export default function SolfaViewScreen() {
         />
       </ScrollView>
       </ScrollView>
+      <TouchableOpacity onPress={() => router.push('/')} style={styles.iconBtn}>
+    <Ionicons name="home" size={30} color="#2869CA" />
+  </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -171,5 +175,22 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 13,
     fontWeight: '500',
+  },
+  iconBtn: {
+    width: 60,
+    height: 60,
+    marginLeft:"auto",
+    marginRight:"auto",
+    borderRadius: 30,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowRadius: 5,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    elevation:4,
+    marginBottom:20
+   
   },
 });
