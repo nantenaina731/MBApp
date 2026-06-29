@@ -150,10 +150,8 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 30,
     backgroundColor: '#fff',
-  
     justifyContent: 'center',
     alignItems: 'center',
-  
     elevation: 8,
     shadowColor: '#000',
     shadowOffset: {
@@ -208,7 +206,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 6,
     paddingTop:19
-    
   },
   fontBtn: {
     backgroundColor: 'rgba(255,255,255,0.2)',

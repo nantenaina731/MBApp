@@ -1,18 +1,13 @@
 {
   "expo": {
     "name": "MB Tononkira",
-    "slug": "MB Tononkira",
+    "slug": "mb-tononkira",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled":true,
-    "scheme": "mbtononkira",         
-    "splash": {
-      "image": "./assets/images/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
+    "newArchEnabled": true,
+    "scheme": "mbtononkira",
     "ios": {
       "supportsTablet": true
     },
@@ -21,10 +16,17 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.te33.mbtononkira",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b61232bc-474e-44ea-9a42-93a0593477a4"
+      }
     }
   }
 }

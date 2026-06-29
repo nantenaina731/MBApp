@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { Modal, Pressable } from 'react-native';
+import { Modal, Pressable, Image} from 'react-native';
+import sary from "@/assets/images/logo.png"
 import {
   View,
   Text,
@@ -74,8 +75,10 @@ const [menuVisible, setMenuVisible] = useState(false);
     <StatusBar barStyle="light-content" backgroundColor={'#2869CA'} />
       <View style={styles.header}>
         <View style={styles.menu}>
+        <View style={styles.logoTitre}>
+        <Image source={sary} style={styles.logo}/>
         <Text style={styles.headerTitle}>MARAIMBAOVAO</Text>
- 
+        </View>
 <TouchableOpacity style={styles.barre} onPress={() => setMenuVisible(true)}>
 <Ionicons
     name="menu"
@@ -200,14 +203,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#F8F7FC',
   },
   menu:{
-    flexDirection:"row",
-    gap:133,
-    marginBottom:10
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingTop: 50,
+    paddingBottom: 14,
   },
   header: {
     backgroundColor: '#2869CA',
     paddingHorizontal: 20,
-    paddingTop: 50,
     paddingBottom: 25,
     borderBottomEndRadius: 15,
   },
@@ -215,8 +219,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom:10,
-    bottom: 6
   },
   searchBar: {
     height: 50,       
@@ -283,7 +285,17 @@ const styles = StyleSheet.create({
     left:15
   },
   barre: {
-    bottom:9,
-    right:2
-  }
+    padding:4,
+  },
+  logo:{
+    width:40,
+    height:40,
+    borderRadius:100,
+  },
+  logoTitre: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    marginRight: 'auto', 
+  },
 });
