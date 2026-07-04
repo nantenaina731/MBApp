@@ -77,7 +77,7 @@ const [menuVisible, setMenuVisible] = useState(false);
         <View style={styles.menu}>
         <View style={styles.logoTitre}>
         <Image source={sary} style={styles.logo}/>
-        <Text style={styles.headerTitle}>MARAIMBAOVAO</Text>
+        <Text style={styles.headerTitle}> STK MARAIMBAOVAO</Text>
         </View>
 <TouchableOpacity style={styles.barre} onPress={() => setMenuVisible(true)}>
 <Ionicons
