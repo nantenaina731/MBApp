@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Modal, Pressable, Image} from 'react-native';
 import sary from "@/assets/images/logo.png"
+//import { StatusBar } from 'expo-status-bar';
 import {
   View,
   Text,
@@ -10,12 +11,15 @@ import {
   TouchableOpacity,
   StyleSheet,
   ListRenderItem,
-  StatusBar,
+  StatusBar
 } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import { useRouter } from 'expo-router';
 import FuseLib, { type IFuseOptions } from 'fuse.js';
 import songsData from '../../allLyrics/songs.json';
+import { Dimensions } from 'react-native';
+
+const { width, height } = Dimensions.get('window');
 export type Song = {
   id: number;
   title: string;
@@ -72,7 +76,7 @@ const [menuVisible, setMenuVisible] = useState(false);
   const Separator = () => <View style={styles.separator} />;
   return (
     <SafeAreaView style={styles.container}>
-    <StatusBar barStyle="light-content" backgroundColor={'#2869CA'} />
+<View style={styles.inner}>
       <View style={styles.header}>
         <View style={styles.menu}>
         <View style={styles.logoTitre}>
@@ -96,17 +100,17 @@ const [menuVisible, setMenuVisible] = useState(false);
     style={{ flex: 1 }}
     onPress={() => setMenuVisible(false)}
   >
-    <View
-      style={{
-        position: 'absolute',
-        top:1,
-        right: 20,
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        elevation: 9,
-        minWidth: 150,
-      }}
-    >
+  <View
+  style={{
+    position: 'absolute',
+    right: width * 0.03,       
+    bottom: height * 0.75,      
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    elevation: 9,
+    minWidth: width * 0.4,      
+  }}
+>
       <TouchableOpacity
         style={{
           flexDirection: 'row',
@@ -193,6 +197,7 @@ const [menuVisible, setMenuVisible] = useState(false);
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
       />
+      </View>
     </SafeAreaView>
   );
 }
@@ -200,7 +205,11 @@ const [menuVisible, setMenuVisible] = useState(false);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8F7FC',
+    backgroundColor: '#2869CA', 
+  },
+  inner: {
+    flex: 1,
+    backgroundColor: '#F8F7FC', 
   },
   menu:{
     flexDirection: 'row',

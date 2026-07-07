@@ -71,7 +71,7 @@ export default function FavoriteScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-
+<View style={styles.inner}>
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity
@@ -93,7 +93,7 @@ export default function FavoriteScreen() {
         ItemSeparatorComponent={Separator}
         showsVerticalScrollIndicator={false}
       />
-
+</View>
     </SafeAreaView>
   );
 }
@@ -103,7 +103,11 @@ export default function FavoriteScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAFAFA',
+    backgroundColor: '#2869CA', // ← couleur statusBar
+  },
+  inner: {
+    flex: 1,
+    backgroundColor: '#F8F7FC', // ← couleur du contenu
   },
   // Header
   header: {

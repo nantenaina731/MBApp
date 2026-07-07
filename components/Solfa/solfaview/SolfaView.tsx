@@ -51,8 +51,7 @@ export default function SolfaViewScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#2869CA" />
-
+      <View style={styles.inner}>
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity
@@ -107,13 +106,18 @@ export default function SolfaViewScreen() {
       <TouchableOpacity onPress={() => router.push('/')} style={styles.iconBtn}>
     <Ionicons name="home" size={30} color="#2869CA" />
   </TouchableOpacity>
+  </View>
     </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAFAFA',
+    backgroundColor: '#2869CA', // ← couleur statusBar
+  },
+  inner: {
+    flex: 1,
+    backgroundColor: '#F8F7FC', // ← couleur du contenu
   },
   header: {
     backgroundColor: '#2869CA',

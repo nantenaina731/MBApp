@@ -46,8 +46,8 @@ export default function AutreScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.inner}>
 
-      {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => router.back()}
@@ -68,7 +68,7 @@ export default function AutreScreen() {
         ItemSeparatorComponent={Separator}
         showsVerticalScrollIndicator={false}
       />
-
+</View>
     </SafeAreaView>
   );
 }
@@ -76,7 +76,11 @@ export default function AutreScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAFAFA',
+    backgroundColor: '#2869CA', // ← couleur statusBar
+  },
+  inner: {
+    flex: 1,
+    backgroundColor: '#F8F7FC', // ← couleur du contenu
   },
   // Header
   header: {

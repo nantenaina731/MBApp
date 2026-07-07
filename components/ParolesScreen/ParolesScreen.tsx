@@ -8,7 +8,6 @@ import {
   ScrollView,
   TouchableOpacity,
   StyleSheet,
-  StatusBar,
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
@@ -58,7 +57,7 @@ export default function ParolesScreen() {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor={'#2869CA'} />
+<View style={styles.inner}>
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity
@@ -133,6 +132,7 @@ export default function ParolesScreen() {
   />
 </TouchableOpacity>
 </View>
+</View>
     </SafeAreaView>
   );
 }
@@ -140,7 +140,11 @@ export default function ParolesScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAFAFA',
+    backgroundColor: '#2869CA', // ← couleur statusBar
+  },
+  inner: {
+    flex: 1,
+    backgroundColor: '#F8F7FC', // ← couleur du contenu
   },
   fond: {
     position: 'absolute',

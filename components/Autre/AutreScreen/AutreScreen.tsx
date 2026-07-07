@@ -2,16 +2,17 @@ import React, { useState,useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as SecureStore from 'expo-secure-store';
 import { Alert } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import {
   View,
   Text,
   ScrollView,
   TouchableOpacity,
   StyleSheet,
-  StatusBar,
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { lightGreen300, white } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 type OtherSong = {
   id: number;
   title: string;
@@ -58,8 +59,8 @@ export default function ParolesScreen() {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor={'#2869CA'} />
-      {/* Header */}
+      <StatusBar  backgroundColor={'#2868CA'} style='light' />
+      <View style={styles.inner}>  
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.backBtn}
@@ -136,16 +137,21 @@ export default function ParolesScreen() {
   </TouchableOpacity>
 </View>
 
-  
+</View>
+
     </SafeAreaView>
   );
 }
 // ─── Styles ──────────────────────────────────────────────────────────────────
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FAFAFA',
-  },
+ container: {
+  flex: 1,
+  backgroundColor: '#2869CA', // ← couleur statusBar
+},
+inner: {
+  flex: 1,
+  backgroundColor: '#F8F7FC', // ← couleur du contenu
+},
   fond: {
     position: 'absolute',
     right: 20,
@@ -283,7 +289,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     left:10,
-    bottom:50,
+    bottom:100,
     borderRadius: 30,
     backgroundColor: '#fff',
     justifyContent: 'center',
@@ -299,7 +305,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000',
-    shadowRadius: 5,
+    shadowRadius: 10,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     elevation:4,

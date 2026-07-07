@@ -49,6 +49,7 @@ export default function SolfaScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.inner}>
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => router.back()}
@@ -68,6 +69,7 @@ export default function SolfaScreen() {
         ItemSeparatorComponent={Separator}
         showsVerticalScrollIndicator={false}
       />
+      </View>
     </SafeAreaView>
   );
 }
@@ -77,7 +79,11 @@ export default function SolfaScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8F7FC',
+    backgroundColor: '#2869CA', // ← couleur statusBar
+  },
+  inner: {
+    flex: 1,
+    backgroundColor: '#F8F7FC', // ← couleur du contenu
   },
   header: {
     backgroundColor: '#2869CA',

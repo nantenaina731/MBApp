@@ -23,7 +23,10 @@
       },
       "edgeToEdgeEnabled": true,
       "package": "com.te33.mbtononkira",
-      "versionCode": 1
+      "versionCode": 1,
+      "statusBarColor": "#2869CA",
+  "statusBarStyle": "light",
+  "statusBarTranslucent": false
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
